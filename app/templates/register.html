@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Register New Account</h2>
+    
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}  <!-- CSRF token -->
+
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=40) }}
+            {% if form.email.errors %}
+                <ul>
+                    {% for error in form.email.errors %}
+                        <li style="color:red;">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </p>
+
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=40) }}
+            {% if form.password.errors %}
+                <ul>
+                    {% for error in form.password.errors %}
+                        <li style="color:red;">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </p>
+
+        <p>
+            {{ form.confirm_password.label }}<br>
+            {{ form.confirm_password(size=40) }}
+            {% if form.confirm_password.errors %}
+                <ul>
+                    {% for error in form.confirm_password.errors %}
+                        <li style="color:red;">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </p>
+
+        {{ form.submit() }}
+    </form>
+{% endblock %}
